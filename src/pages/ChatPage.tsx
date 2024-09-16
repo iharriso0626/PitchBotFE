@@ -12,7 +12,7 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <div className="p-5 flex absolute max-w-xl mx-auto font-sans ">
+    <div className="p-5 flex h-screen w-screen flex-col max-w-xl mx-auto font-sans ">
       <h1 className="text-2xl font-bold mb-4">AI Chat Bot</h1>
       <div className="border border-gray-300 p-3 h-96 overflow-y-scroll mb-4">
         {messages.map((message, index) => (

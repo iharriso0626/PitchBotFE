@@ -7,7 +7,7 @@ const LoginPage: React.FC = () => {
       <div className='z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex'>
         <div className='h-full w-full items-center flex justify-center'>
           {/* Outer Login box */}
-          <div className="flex large:w-[583.5px] large:px-[91px] large:pb-[71px] xlarge:w-[780px] flex-col large:h-[549.5px] xlarge:h-[733.33px] justify-center items-center bg-[#3D3935]">
+          <div className="flex large:w-[583.5px] large:px-[91px] large:pb-[71px] xlarge:w-[780px] flex-col large:h-[549.5px] xlarge:h-[733.33px] justify-center items-center bg-gray-300 p-5 rounded-lg">
             <div className=''>
               {/* Header Box */}
               <div className='large:w-[401px] xlarge:w-[534.66px] large:h-[46px] flex xlarge:h-[62px] items-center justify-center large:mt-[71px] xlarge:mt-[95.33px]'>
