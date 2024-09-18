@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Sidebar from '@/app/components/sidebar';
 
 const ChatPage: React.FC = () => {
   const [messages, setMessages] = useState<{ sender: string, text: string }[]>([]);
@@ -13,6 +14,7 @@ const ChatPage: React.FC = () => {
 
   return (
     <div className='w-screen h-screen flex items-center  bg-gray-300'>
+      <Sidebar />
     <div className="p-5 flex h-[90%] w-[80%]  rounded-2xl  border-2 flex-col bg-white mx-auto font-sans ">
       <h1 className="text-2xl justify-center flex font-bold mb-4">Pitch Your Ideas Here!</h1>
 
