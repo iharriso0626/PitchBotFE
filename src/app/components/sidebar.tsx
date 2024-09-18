@@ -5,13 +5,13 @@ import { Button, Drawer, Menu } from 'react-daisyui';
 
 const Sidebar = () => {
   return (
-    <div className='w-[15%]  h-full bg-black   p-2 flex flex-col border-r-2 border-black'>
+    <div className='w-[15%]  h-full bg-black   p-2 flex flex-col border-r-2 border-[#cb88fc]'>
        {/* Name Box */}
-      <div className='flex h-[15%] w-fill rounded-xl border-black bg-white items-center justify-center text-[50px]'>
+      <div className='flex h-[15%] w-fill rounded-xl border-[#6f04bd] border-[3px] bg-white items-center justify-center text-[50px]'>
           <h1 className='p-2 px-3  bg-white rounded-xl'>PitchBot</h1>
       </div>
 
-      <div className='flex-col h-screen mt-2 bg-white rounded-xl flex w-full'>
+      <div className='flex-col h-screen mt-2 bg-white border-[#6f04bd] border-[3px] rounded-xl flex w-full'>
         {/* Start Assignment Box */}
         <div className='flex h-[15%] w-fill  border-black  items-center justify-center text-[20px]'>
           <h1 className='p-2 px-3  rounded-xl'>Start Assignment</h1>

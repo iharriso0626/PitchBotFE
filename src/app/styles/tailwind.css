@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Custom CSS to hide scrollbars but allow scrolling */
+.custom-scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    overflow-y: scroll; /* Important to enable scrolling */
+}
+
+.custom-scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+

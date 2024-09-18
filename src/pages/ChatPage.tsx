@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Sidebar from '@/app/components/sidebar';
 
+
 const ChatPage: React.FC = () => {
   const [messages, setMessages] = useState<{ sender: string, text: string }[]>([]);
   const [input, setInput] = useState('');
@@ -31,7 +32,7 @@ const ChatPage: React.FC = () => {
       </div>
 
       {/* Speech Box */}
-      <div className="border border-gray-300 p-3 h-[20%] overflow-y-scroll mb-4 rounded-xl mt-auto">
+      <div className="border border-gray-300 custom-scrollbar-hide p-3 h-[20%] overflow-y-scroll   mb-4 rounded-xl mt-auto">
         {messages.map((message, index) => (
           <div key={index} className="mb-3">
             <strong>{message.sender}:</strong> <span>{message.text}</span>
