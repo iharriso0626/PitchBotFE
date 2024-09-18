@@ -13,18 +13,21 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <div className='w-screen h-screen flex items-center  bg-gray-300'>
+    <div className='w-screen h-screen overflow-hidden flex items-center  bg-black '>
       <Sidebar />
-    <div className="p-5 flex h-[90%] w-[80%]  rounded-2xl  border-2 flex-col bg-white mx-auto font-sans ">
+
+    {/* Box Containing Main Body*/}
+    <div className="p-5 flex h-[90%] w-[80%]  rounded-2xl  border-[8px] border-[#cb88fc] flex-col bg-white mx-auto font-sans ">
       <h1 className="text-2xl justify-center flex font-bold mb-4">Pitch Your Ideas Here!</h1>
 
       {/* Box Containing Cameras*/}
       <div className='flex flex-row '>
         {/* User Camera box */}
-        <div className='w-[450px] h-[350px] border-2 rounded-2xl bg-black ml-5 text-white'><h1 className='flex items-center justify-center h-full w-full'>User Camera Here</h1></div>
+        <div className='w-[450px] h-[350px] border-[10px] border-[#6f04bd] rounded-2xl bg-black ml-5 text-white'>
+          <h1 className='flex items-center justify-center h-full w-full'>User Camera Here</h1></div>
 
         {/* AI Camera box */}
-        <div className='w-[450px] h-[350px] border-2 flex rounded-2xl bg-black ml-auto mr-5 text-white'><h1 className='flex items-center justify-center h-full w-full'>AI Camera Here</h1></div>
+        <div className='w-[450px] h-[350px] border-[10px] border-[#6f04bd] flex rounded-2xl bg-black ml-auto mr-5 text-white'><h1 className='flex items-center justify-center h-full w-full'>AI Camera Here</h1></div>
       </div>
 
       {/* Speech Box */}

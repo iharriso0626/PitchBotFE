@@ -5,30 +5,32 @@ import { Button, Drawer, Menu } from 'react-daisyui';
 
 const Sidebar = () => {
   return (
-    <div className='w-[15%] h-screen bg-gray-500 border-r-2 border-black'>
-        {/* Name Box */}
-        <div className='flex h-[15%] w-fill border-b-2 border-black bg-gray-300 items-center justify-center text-[50px]'>
-          <h1 className='p-2 px-3 border-2 bg-white rounded-xl'>PitchBot</h1>
-        </div>
+    <div className='w-[15%]  h-full bg-black   p-2 flex flex-col border-r-2 border-black'>
+       {/* Name Box */}
+      <div className='flex h-[15%] w-fill rounded-xl border-black bg-white items-center justify-center text-[50px]'>
+          <h1 className='p-2 px-3  bg-white rounded-xl'>PitchBot</h1>
+      </div>
 
+      <div className='flex-col h-screen mt-2 bg-white rounded-xl flex w-full'>
         {/* Start Assignment Box */}
-        <div className='flex h-[15%] w-fill  border-black bg-gray-300 items-center justify-center text-[20px]'>
-          <h1 className='p-2 px-3 border-2 bg-white rounded-xl'>Start Assignment</h1>
+        <div className='flex h-[15%] w-fill  border-black  items-center justify-center text-[20px]'>
+          <h1 className='p-2 px-3  rounded-xl'>Start Assignment</h1>
         </div>
 
         {/* Scores Box */}
-        <div className='flex h-[15%] w-fill  border-black bg-gray-300 items-center justify-center text-[20px]'>
-          <h1 className='p-2 px-3 border-2 bg-white rounded-xl'>Scores</h1>
+        <div className='flex h-[15%] w-fill  border-black  items-center justify-center text-[20px]'>
+          <h1 className='p-2 px-3   rounded-xl'>Scores</h1>
         </div>
 
         {/* Options Box */}
-        <div className='flex h-[15%] w-fill border-black bg-gray-300 items-center justify-center text-[20px]'>
-          <h1 className='p-2 px-3 border-2 bg-white rounded-xl'>Options</h1>
+        <div className='flex h-[15%] w-fill mb-auto border-black bg-white items-center justify-center text-[20px]'>
+          <h1 className='p-2 px-3 bg-white rounded-xl'>Options</h1>
         </div>
 
         {/* Account Box */}
-        <div className='flex h-[15%] w-fill  border-black bg-gray-300 items-center justify-center text-[20px]'>
-          <h1 className='p-2 px-3 border-2 bg-white rounded-xl'>Account</h1>
+        <div className='flex h-[15%] w-fill rounded-b-xl border-black bg-white items-center justify-center text-[20px]'>
+          <h1 className='p-2 px-3  bg-white rounded-xl'>Account</h1>
+        </div>
         </div>
     </div>
   );
