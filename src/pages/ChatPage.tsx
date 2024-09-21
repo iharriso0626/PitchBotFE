@@ -1,12 +1,13 @@
 // src/pages/ChatPage.tsx
 import React, { useState } from 'react';
 import Sidebar from '@/app/components/sidebar';
-import SpeechToText from '../app/components/SpeechtoText';
+import SpeechToText2 from '../app/components/SpeechToText';
 
 const ChatPage: React.FC = () => {
   const [messages, setMessages] = useState<{ sender: string, text: string }[]>([]);
   const [input, setInput] = useState('');
   const [listening, setListening] = useState(false);
+  const [interimText, setInterimText] = useState('');
 
   const handleSend = () => {
     if (input.trim()) {
@@ -22,6 +23,15 @@ const ChatPage: React.FC = () => {
 
   const toggleListening = () => {
     setListening(!listening);
+  };
+
+  const handleTranscription = (text: string, isFinal: boolean) => {
+    if (isFinal) {
+      setInput((prevInput) => prevInput + ' ' + text);
+      setInterimText('');
+    } else {
+      setInterimText(text);
+    }
   };
 
   return (
@@ -58,9 +68,9 @@ const ChatPage: React.FC = () => {
         <div className="flex">
           <input
             type="text"
-            value={input}
+            value={input + interimText}
             onChange={(e) => setInput(e.target.value)}
-            className="flex-grow p-2 rounded-l-lg border text-black border-gray-300"
+            className="flex-grow p-2 rounded-l-lg border overflow-scroll custom-scroll-hidden text-black border-gray-300"
           />
           <button onClick={handleSend} className="p-2 bg-blue-500 rounded-r-lg text-white">Send</button>
         </div>
@@ -72,7 +82,8 @@ const ChatPage: React.FC = () => {
       </div>
 
       {/* Speech to Text Component */}
-      <SpeechToText onResult={(text) => setInput(text)} listening={listening} />
+      <SpeechToText2 onTranscription={handleTranscription} listening={listening} />
+      
     </div>
   );
 };

@@ -1,60 +1,89 @@
-import React, { useEffect } from 'react';
+// src/app/components/SpeechToText2.tsx
+"use client";
+import { useEffect, useRef } from "react";
 
-interface SpeechToTextProps {
-  onResult: (text: string) => void;
-}
-
-// Extend the window interface to include SpeechRecognition and webkitSpeechRecognition
 declare global {
   interface Window {
-    SpeechRecognition: any;
     webkitSpeechRecognition: any;
   }
 }
 
-// Define the SpeechRecognitionEvent and SpeechRecognitionErrorEvent types manually
-interface SpeechRecognitionEvent {
-  results: {
-    [key: number]: {
-      [key: number]: {
-        transcript: string;
-      };
-    };
+type CommandFunction = () => void;
+type Commands = {
+  [key: string]: CommandFunction;
+};
+
+interface SpeechToText2Props {
+  onTranscription: (text: string, isFinal: boolean) => void;
+  listening: boolean;
+}
+
+const SpeechToText2: React.FC<SpeechToText2Props> = ({ onTranscription, listening }) => {
+  const recognitionRef = useRef<any>(null);
+
+  const commands: Commands = {
+    "hello": () => alert("Hello!"),
+    "open google": () => window.open("https://www.google.com", "_blank")
   };
-}
 
-interface SpeechRecognitionErrorEvent {
-  error: string;
-}
-
-const SpeechToText: React.FC<SpeechToTextProps> = ({ onResult }) => {
   useEffect(() => {
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.continuous = true;
-    recognition.interimResults = false;
-    recognition.lang = 'en-US';
+    recognitionRef.current = new window.webkitSpeechRecognition();
+    recognitionRef.current.continuous = true;
+    recognitionRef.current.interimResults = true;
 
-    recognition.onresult = (event: SpeechRecognitionEvent) => {
-      const transcript = event.results[event.results.length - 1][0].transcript.trim();
-      onResult(transcript);
+    recognitionRef.current.onresult = (event: any) => {
+      let interimTranscript = '';
+      let finalTranscript = '';
+
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const transcript = event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+          finalTranscript += transcript;
+        } else {
+          interimTranscript += transcript;
+        }
+      }
+
+      if (finalTranscript) {
+        onTranscription(finalTranscript, true);
+      }
+      if (interimTranscript) {
+        onTranscription(interimTranscript, false);
+      }
+
+      for (const command in commands) {
+        if (finalTranscript.toLowerCase().includes(command)) {
+          commands[command]();
+          break;
+        }
+      }
     };
 
-    recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
+    recognitionRef.current.onerror = (event: any) => {
       console.error('Speech recognition error', event.error);
     };
 
-    recognition.onend = () => {
+    recognitionRef.current.onend = () => {
       console.log('Speech recognition ended');
+      if (listening) {
+        recognitionRef.current.start();
+      }
     };
-
-    recognition.start();
 
     return () => {
-      recognition.stop();
+      recognitionRef.current.stop();
     };
-  }, [onResult]);
+  }, [onTranscription, listening]);
+
+  useEffect(() => {
+    if (listening) {
+      recognitionRef.current.start();
+    } else {
+      recognitionRef.current.stop();
+    }
+  }, [listening]);
 
   return null;
 };
 
-export default SpeechToText;
+export default SpeechToText2;
