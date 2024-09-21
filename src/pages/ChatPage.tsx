@@ -60,7 +60,7 @@ const ChatPage: React.FC = () => {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="flex-grow p-2 rounded-l-lg border border-gray-300"
+            className="flex-grow p-2 rounded-l-lg border text-black border-gray-300"
           />
           <button onClick={handleSend} className="p-2 bg-blue-500 rounded-r-lg text-white">Send</button>
         </div>
