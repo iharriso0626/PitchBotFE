@@ -27,6 +27,11 @@ const SpeechToText2: React.FC<SpeechToText2Props> = ({ onTranscription, listenin
   };
 
   useEffect(() => {
+    if (!('webkitSpeechRecognition' in window)) {
+      console.error('Speech recognition not supported in this browser.');
+      return;
+    }
+
     recognitionRef.current = new window.webkitSpeechRecognition();
     recognitionRef.current.continuous = true;
     recognitionRef.current.interimResults = true;
@@ -76,10 +81,12 @@ const SpeechToText2: React.FC<SpeechToText2Props> = ({ onTranscription, listenin
   }, [onTranscription, listening]);
 
   useEffect(() => {
-    if (listening) {
-      recognitionRef.current.start();
-    } else {
-      recognitionRef.current.stop();
+    if (recognitionRef.current) {
+      if (listening) {
+        recognitionRef.current.start();
+      } else {
+        recognitionRef.current.stop();
+      }
     }
   }, [listening]);
 

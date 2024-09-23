@@ -35,7 +35,7 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <div className='w-screen h-screen overflow-hidden flex items-center bg-black'>
+    <div className='w-screen h-screen overflow-hidden flex items-center bg-gray-300'>
       <Sidebar />
 
       {/* Box Containing Main Body */}
@@ -58,7 +58,7 @@ const ChatPage: React.FC = () => {
         {/* Speech Box */}
         <div className="border border-gray-300 custom-scrollbar-hide p-3 h-[20%] overflow-y-scroll mb-4 rounded-xl mt-auto">
           {messages.map((message, index) => (
-            <div key={index} className="mb-3">
+            <div key={index} className="mb-3 text-black">
               <strong>{message.sender}:</strong> <span>{message.text}</span>
             </div>
           ))}
