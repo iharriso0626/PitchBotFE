@@ -1,4 +1,4 @@
-// src/app/components/SpeechToText2.tsx
+// src/app/components/SpeechToText.tsx
 "use client";
 import { useEffect, useRef } from "react";
 
@@ -13,12 +13,12 @@ type Commands = {
   [key: string]: CommandFunction;
 };
 
-interface SpeechToText2Props {
+interface SpeecToTextProps {
   onTranscription: (text: string, isFinal: boolean) => void;
   listening: boolean;
 }
 
-const SpeechToText2: React.FC<SpeechToText2Props> = ({ onTranscription, listening }) => {
+const SpeecToText: React.FC<SpeecToTextProps> = ({ onTranscription, listening }) => {
   const recognitionRef = useRef<any>(null);
 
   const commands: Commands = {
@@ -93,4 +93,4 @@ const SpeechToText2: React.FC<SpeechToText2Props> = ({ onTranscription, listenin
   return null;
 };
 
-export default SpeechToText2;
+export default SpeecToText;

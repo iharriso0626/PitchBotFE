@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Sidebar from '@/app/components/sidebar';
 import SpeechToText2 from '../app/components/SpeechToText';
+import CameraComponent from '@/app/components/CameraComponent';
 
 const ChatPage: React.FC = () => {
   const [messages, setMessages] = useState<{ sender: string, text: string }[]>([]);
@@ -43,17 +44,7 @@ const ChatPage: React.FC = () => {
         <h1 className="text-2xl justify-center flex font-bold mb-4">Pitch Your Ideas Here!</h1>
 
         {/* Box Containing Cameras */}
-        <div className='flex flex-row'>
-          {/* User Camera box */}
-          <div className='w-[450px] h-[350px] border-[10px] border-[#6f04bd] rounded-2xl bg-black ml-5 text-white'>
-            <h1 className='flex items-center justify-center h-full w-full'>User Camera Here</h1>
-          </div>
-
-          {/* AI Camera box */}
-          <div className='w-[450px] h-[350px] border-[10px] border-[#6f04bd] flex rounded-2xl bg-black ml-auto mr-5 text-white'>
-            <h1 className='flex items-center justify-center h-full w-full'>AI Camera Here</h1>
-          </div>
-        </div>
+        <CameraComponent />
 
         {/* Speech Box */}
         <div className="border border-gray-300 custom-scrollbar-hide p-3 h-[20%] overflow-y-scroll mb-4 rounded-xl mt-auto">
