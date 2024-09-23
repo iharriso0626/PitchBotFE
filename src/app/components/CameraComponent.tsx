@@ -1,12 +1,22 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+
+import microphone_mute from '../images/microphone_mute.svg';
+import microphone_on from '../images/microphone_on.svg';
+import camera_on from '../images/camera_on.svg';
+import camera_off from '../images/camera_off.svg';
 
 const CameraComponent: React.FC = () => {
   const userVideoRef = useRef<HTMLVideoElement>(null);
+  const [stream, setStream] = useState<MediaStream | null>(null);
+  const [videoEnabled, setVideoEnabled] = useState(true);
+  const [audioEnabled, setAudioEnabled] = useState(true);
 
   useEffect(() => {
     const startUserVideo = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        setStream(stream);
         if (userVideoRef.current) {
           userVideoRef.current.srcObject = stream;
         }
@@ -18,17 +28,51 @@ const CameraComponent: React.FC = () => {
     startUserVideo();
   }, []);
 
+  const toggleVideo = () => {
+    if (stream) {
+      stream.getVideoTracks().forEach(track => {
+        track.enabled = !track.enabled;
+      });
+      setVideoEnabled(!videoEnabled);
+    }
+  };
+
+  const toggleAudio = () => {
+    if (stream) {
+      stream.getAudioTracks().forEach(track => {
+        track.enabled = !track.enabled;
+      });
+      setAudioEnabled(!audioEnabled);
+    }
+  };
+
   return (
     <>
       {/* Box Containing Cameras */}
-      <div className='flex flex-row'>
+      <div className='flex flex-row relative'>
         {/* User Camera box */}
-        <div className='w-[450px] h-[350px] border-[10px] border-[#6f04bd] rounded-2xl bg-black ml-5 text-white'>
-          <video
-            ref={userVideoRef}
-            autoPlay
-            className='flex items-center justify-center h-full w-full'
-          />
+        <div className='w-[450px] h-[350px] border-[10px] border-[#6f04bd] rounded-2xl bg-black ml-5 text-white relative'>
+    <video
+      ref={userVideoRef}
+      autoPlay
+      className='flex items-center justify-center h-full w-full'
+    />
+    <div className='absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2'>
+      <button onClick={toggleVideo} className='p-3 rounded-full border-[#6f04bd] border-2 bg-white text-white'>
+        <Image
+          src={videoEnabled ? camera_on : camera_off}
+          alt={videoEnabled ? 'Camera On' : 'Camera Off'}
+          className='w-6 h-6'
+        />
+      </button>
+      <button onClick={toggleAudio} className='p-3 rounded-full bg-white border-[#6f04bd] border-2 text-white'>
+        <Image
+          src={audioEnabled ? microphone_on : microphone_mute}
+          alt={audioEnabled ? 'Microphone On' : 'Microphone Mute'}
+          className='w-6 h-6'
+        />
+      </button>
+    </div>
         </div>
 
         {/* AI Camera box */}
