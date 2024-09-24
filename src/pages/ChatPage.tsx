@@ -1,7 +1,6 @@
 // src/pages/ChatPage.tsx
 import React, { useState } from 'react';
 import Sidebar from '@/app/components/sidebar';
-import SpeechToText2 from '../app/components/SpeechToText';
 import SpeechToTextAPI from '@/app/components/SpeechToTextAPI';
 import CameraComponent from '@/app/components/CameraComponent';
 
@@ -74,9 +73,7 @@ const ChatPage: React.FC = () => {
       </div>
 
       {/* Speech to Text Component */}
-      <SpeechToText2 onTranscription={handleTranscription} listening={listening} />
-      
-      
+      <SpeechToTextAPI onTranscription={handleTranscription} listening={listening} />
     </div>
   );
 };
