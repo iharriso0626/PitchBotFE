@@ -10,8 +10,8 @@ const ScoresPage: React.FC = () => {
       <Sidebar />
 
       {/* Box Containing Main Body */}
-      <div className="p-5 flex h-[90%] w-[80%] rounded-2xl border-[8px] border-[#cb88fc] flex-col bg-white mx-auto font-sans">
-            <h1 className='text-black items-center justify-center flex'>Welcome to the Scores Page</h1>
+      <div className="p-5 flex h-[90%] w-[80%] rounded-2xl border-[8px] border-[#cb88fc]  bg-white mx-auto font-sans">
+        <div className='w-[60%] h-[20%] bg-gray-300 flex justify-center items-center text-black'> Welcome to the Scores Page</div>
       </div>
 
     </div>

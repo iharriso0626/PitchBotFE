@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Sidebar from '@/app/components/sidebar';
 import SpeechToText2 from '../app/components/SpeechToText';
+import SpeechToTextAPI from '@/app/components/SpeechToTextAPI';
 import CameraComponent from '@/app/components/CameraComponent';
 
 const ChatPage: React.FC = () => {
@@ -36,11 +37,11 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <div className='w-screen h-screen overflow-hidden flex items-center bg-gray-300'>
+    <div className='w-screen h-screen overflow-hidden flex items-center bg-[#C1C6C8]'>
       <Sidebar />
 
       {/* Box Containing Main Body */}
-      <div className="p-5 flex h-[90%] w-[80%] rounded-2xl border-[8px] border-[#cb88fc] flex-col bg-white mx-auto font-sans">
+      <div className="p-5 flex h-[90%] w-[80%] rounded-2xl border-[8px] border-[#0C2340] flex-col bg-white mx-auto font-sans">
         <h1 className="text-2xl justify-center flex font-bold mb-4">Pitch Your Ideas Here!</h1>
 
         {/* Box Containing Cameras */}
@@ -74,6 +75,7 @@ const ChatPage: React.FC = () => {
 
       {/* Speech to Text Component */}
       <SpeechToText2 onTranscription={handleTranscription} listening={listening} />
+      
       
     </div>
   );
