@@ -12,24 +12,28 @@ const SpeechToTextAPI: React.FC<SpeechToTextAPIProps> = ({ onTranscription, list
 
   useEffect(() => {
     const startListening = async () => {
-      const response = await fetch('/api/transcription', {
-        method: 'POST',
-      });
+      try {
+        const response = await fetch('/api/transcription', {
+          method: 'POST',
+        });
 
-      if (response.ok) {
-        eventSourceRef.current = new EventSource('/api/transcription');
+        if (response.ok) {
+          eventSourceRef.current = new EventSource('/api/transcription');
 
-        eventSourceRef.current.onmessage = (event) => {
-          const { text, isFinal } = JSON.parse(event.data);
-          onTranscription(text, isFinal);
-        };
+          eventSourceRef.current.onmessage = (event) => {
+            const { text, isFinal } = JSON.parse(event.data);
+            onTranscription(text, isFinal);
+          };
 
-        eventSourceRef.current.onerror = (error) => {
-          console.error('EventSource error:', error);
-          eventSourceRef.current?.close();
-        };
-      } else {
-        console.error('Failed to start transcription:', response.statusText);
+          eventSourceRef.current.onerror = (error) => {
+            console.error('EventSource error:', error);
+            eventSourceRef.current?.close();
+          };
+        } else {
+          console.error('Failed to start transcription:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error starting transcription:', error);
       }
     };
 
