@@ -1,6 +1,4 @@
-// src/pages/ChatPage.tsx
 import React, { useState } from 'react';
-import Sidebar from '@/app/components/sidebar';
 import SpeechToTextAPI from '@/app/components/SpeechToTextAPI';
 import CameraComponent from '@/app/components/CameraComponent';
 
@@ -36,18 +34,18 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <div className='w-screen h-screen overflow-hidden flex items-center bg-[#C1C6C8]'>
-      <Sidebar />
-
+    <div className="flex items-center justify-center ">
       {/* Box Containing Main Body */}
-      <div className="p-5 flex h-[90%] w-[80%] rounded-2xl border-[8px] border-[#0C2340] flex-col bg-white mx-auto font-sans">
+      <div className=" flex flex-col p-2 rounded-2xl h-full w-full  border-[8px] border-[#0C2340] bg-white  font-sans">
         <h1 className="text-2xl justify-center flex font-bold mb-4">Pitch Your Ideas Here!</h1>
 
         {/* Box Containing Cameras */}
-        <CameraComponent />
+        <div className="flex-grow mb-4">
+          <CameraComponent />
+        </div>
 
         {/* Speech Box */}
-        <div className="border border-gray-300 custom-scrollbar-hide p-3 h-[20%] overflow-y-scroll mb-4 rounded-xl mt-auto">
+        <div className="border max-h-auto border-gray-300 custom-scrollbar-hide p-3 flex-grow overflow-y-scroll mb-4 rounded-xl">
           {messages.map((message, index) => (
             <div key={index} className="mb-3 text-black">
               <strong>{message.sender}:</strong> <span>{message.text}</span>

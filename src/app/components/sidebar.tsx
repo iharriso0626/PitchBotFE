@@ -6,13 +6,13 @@ import Link from  'next/link';
 
 const Sidebar = () => {
   return (
-    <div className='w-[15%]  h-full bg-[#C1C6C8]   p-2 flex flex-col  border-[#cb88fc]'>
+    <div className='w-[15%]  h-screen bg-[#C1C6C8]   p-2 flex flex-col  border-[#0C2340]'>
        {/* Name Box */}
-      <div className='flex h-[15%] w-min rounded-xl border-[#6f04bd] border-[3px] bg-white items-center justify-center text-[50px]'>
+      <div className='flex h-[15%] w-min rounded-xl border-[#0C2340] border-[3px] bg-white items-center justify-center text-[50px]'>
           <h1 className='p-2 px-3  bg-white text-black rounded-xl'>PitchBot</h1>
       </div>
 
-      <div className='flex-col h-screen mt-2 bg-white border-[#6f04bd] border-[3px] rounded-xl flex w-full'>
+      <div className='flex-col h-screen mt-2 bg-white border-[#0C2340] border-[3px] rounded-xl flex w-full'>
         {/* Start Assignment Box */}
         <div className='flex h-[15%] w-fill  border-black  items-center justify-center text-[20px]'>
         <Link href={'/ChatPage'} ><h1 className='p-2 px-3 rounded-xl text-black'>Start Assignment</h1></Link>
