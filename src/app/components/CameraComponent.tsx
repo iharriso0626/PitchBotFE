@@ -51,7 +51,7 @@ const CameraComponent: React.FC = () => {
       {/* Box Containing Cameras */}
       <div className='flex flex-row relative'>
         {/* User Camera box */}
-        <div className='w-[450px] h-[350px] border-[10px] border-[#BD1F2D] rounded-2xl bg-black ml-5 text-white relative'>
+        <div className='w-[450px] h-[350px] border-[5px] border-[#BD1F2D] rounded-2xl bg-black ml-5 text-white relative'>
     <video
       ref={userVideoRef}
       autoPlay
@@ -76,7 +76,7 @@ const CameraComponent: React.FC = () => {
         </div>
 
         {/* AI Camera box */}
-        <div className='w-[450px] h-[350px] border-[10px] border-[#BD1F2D] flex rounded-2xl bg-black ml-auto mr-5 text-white'>
+        <div className='w-[450px] h-[350px] border-[5px] border-[#BD1F2D] flex rounded-2xl bg-black ml-auto mr-5 text-white'>
           <h1 className='flex items-center justify-center h-full w-full'>AI Camera Here</h1>
         </div>
       </div>

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Dropdown } from "@nextui-org/react";
+import  VolumeSlider  from '../app/components/VolumeSlider';
+import  ColorMode  from '../app/components/ColorMode';
+import InputsSelection from '../app/components/InputsSelection';
 
 const OptionsPage: React.FC = () => {
   return (
@@ -13,22 +16,20 @@ const OptionsPage: React.FC = () => {
           {/* Light Mode/Dark Mode Box */}
           <div className='flex w-full h-auto items-center justify-center flex-col'>
             <h1 className='text-black mb-2'>Light Mode / Dark Mode</h1>  
-            <label className="relative inline-flex items-center cursor-pointer">
-              <input type="checkbox" className="sr-only peer" defaultChecked />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-            </label>
+            <ColorMode />
           </div>
           
           {/* Volume Slider Box */}
           <div className='flex w-full h-auto items-center justify-center  flex-col'>
-            <h1 className='text-black mb-2'>Volume</h1>  
-            <input type="range" min={0} max="100"  className="range text-black w-[25%]" />  
+            <h1 className='text-black mb-2'>Volume</h1>
+            <VolumeSlider /> 
           </div>
 
           {/* Input Selection Box */}
-          <div className='w-full border-2 flex items-center justify-center'>
+          <div className='w-full border-2 flex flex-col items-center justify-center'>
             <h1 className='text-black items-center '> Input Selection</h1>
-            
+            {/* Input Selection */}
+            <InputsSelection />
 
           </div>
 
