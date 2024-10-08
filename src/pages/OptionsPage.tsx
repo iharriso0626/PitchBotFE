@@ -26,7 +26,7 @@ const OptionsPage: React.FC = () => {
           </div>
 
           {/* Input Selection Box */}
-          <div className='w-full border-2 flex flex-col items-center justify-center'>
+          <div className='w-full flex flex-col items-center justify-center'>
             <h1 className='text-black items-center '> Input Selection</h1>
             {/* Input Selection */}
             <InputsSelection />
