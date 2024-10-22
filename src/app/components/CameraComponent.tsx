@@ -49,7 +49,7 @@ const CameraComponent: React.FC = () => {
   return (
     <>
       {/* Box Containing Cameras */}
-      <div className='flex flex-row relative'>
+      <div className='flex flex-row relative space-x-2'>
         {/* User Camera box */}
         <div className='w-[450px] h-[350px] border-[5px] border-[#0C2340] rounded-2xl bg-black ml-5 text-white relative'>
     <video
