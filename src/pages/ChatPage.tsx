@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import MessageBox from '../app/components/MessageBox';
-import CameraComponent from '@/app/components/CameraComponent';
+import CameraComponent from '../app/components/CameraComponent';
+import SettingsButton from '../app/components/SettingsButton';
 
 const ChatPage: React.FC = () => {
   const [messages, setMessages] = useState<{ sender: string, text: string }[]>([]);
@@ -31,10 +32,13 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center mx-[10%] h-screen">
+
+  <SettingsButton />
+
       {/* Box Containing Main Body */}
-      <div className="p-5 flex flex-col w-screen max-w-4xl h-full max-h-[90%] rounded-2xl border-[8px] border-[#0C2340] bg-white mx-auto font-sans">
-        <h1 className="text-2xl justify-center flex text-black font-bold mb-4">Pitch Your Ideas Here!</h1>
+      <div className="p-5 flex flex-col w-screen  h-full rounded-2xl  bg-white mx-auto font-sans">
+        <h1 className="text-2xl justify-center flex text-black font-bold mb-4">PitchBot: By Samford University</h1>
 
         <CameraComponent />
 
