@@ -38,7 +38,7 @@ const RubricButton: React.FC = () => {
                     </ModalBody>
                     <ModalFooter className='flex justify-end'>
                         <button onClick={handleClose} className="p-2 rounded bg-blue-500 text-white absolute bottom-4 right-4">
-                            Save
+                            Close
                         </button>
                     </ModalFooter>
                 </ModalContent>

@@ -29,7 +29,7 @@ const ScoresPage: React.FC = () => {
       
 
       {/* Box Containing Main Body */}
-      <div className="p-5 flex h-full w-full rounded-2xl border-[8px] border-[#0C2340] flex-col bg-white mx-auto font-sans">
+      <div className="p-5 flex rounded-2xl border-[8px] border-[#0C2340] flex-col bg-white  font-sans">
         <h1 className="text-2xl  justify-center flex font-bold text-black mb-4">See Your Scores Here!</h1>
         
         {/* Box Containing Main Body */}

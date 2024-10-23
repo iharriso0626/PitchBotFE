@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import scoresimg from '../images/scores.svg';
+import scoresimg from '../../images/scores.svg';
 import Image from 'next/image';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from "@nextui-org/modal";
-import ScoresPage from '@/pages/ScoresPage';
+import ScoresPage from '../../../pages/ScoresPage';
 
 const RubricButton: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +38,7 @@ const RubricButton: React.FC = () => {
                     </ModalBody>
                     <ModalFooter className='flex justify-end'>
                         <button onClick={handleClose} className="p-2 rounded bg-blue-500 text-white absolute bottom-4 right-4">
-                            Save
+                            Close
                         </button>
                     </ModalFooter>
                 </ModalContent>
