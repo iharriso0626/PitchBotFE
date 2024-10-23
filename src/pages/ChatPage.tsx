@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import MessageBox from '../app/components/MessageBox';
 import CameraComponent from '../app/components/CameraComponent';
-import SettingsButton from '../app/components/SettingsButton';
+import SettingsButton from '../app/components/SideButtons/SettingsButton';
+import RubricButton from '@/app/components/SideButtons/RubricButton';
 
 const ChatPage: React.FC = () => {
   const [messages, setMessages] = useState<{ sender: string, text: string }[]>([]);
@@ -35,6 +36,7 @@ const ChatPage: React.FC = () => {
     <div className="flex items-center justify-center mx-[10%] h-screen">
 
   <SettingsButton />
+  <RubricButton />
 
       {/* Box Containing Main Body */}
       <div className="p-5 flex flex-col w-screen  h-full rounded-2xl  bg-white mx-auto font-sans">
