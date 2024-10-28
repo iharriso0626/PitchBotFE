@@ -24,7 +24,7 @@ const SettingsButton: React.FC = () => {
             </button>
 
             <Modal isOpen={isOpen} onOpenChange={setIsOpen} className='fixed inset-0 flex items-center justify-center'>
-                <ModalContent className='w-[50%] h-[50%] bg-[#C1C6C8] rounded-lg shadow-lg relative'>
+                <ModalContent className='w-[70%] h-[70%] bg-[#C1C6C8] rounded-lg shadow-lg relative'>
                     <ModalHeader>
                         <button
                             onClick={handleClose}
