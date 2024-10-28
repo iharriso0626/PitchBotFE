@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import MessageBox from '../app/components/MessageBox';
-import CameraComponent from '@/app/components/CameraComponent';
+import CameraComponent from '../app/components/CameraComponent';
+import SettingsButton from '../app/components/SideButtons/SettingsButton';
+import RubricButton from '../app/components/SideButtons/RubricButton';
+import ScoresButton from '../app/components/SideButtons/ScoresButton';
 
 const ChatPage: React.FC = () => {
   const [messages, setMessages] = useState<{ sender: string, text: string }[]>([]);
@@ -8,13 +11,8 @@ const ChatPage: React.FC = () => {
   const [listening, setListening] = useState(false);
   const [interimText, setInterimText] = useState('');
 
-  const handleSend = (userMessage: string, botResponse: string) => {
-    const newMessages = [
-      ...messages,
-      { sender: 'User', text: userMessage },
-      { sender: 'Bot', text: botResponse },
-    ];
-    setMessages(newMessages);
+  const handleSend = (message: { sender: string, text: string }) => {
+    setMessages((prevMessages) => [...prevMessages, message]);
   };
 
   const toggleListening = () => {
@@ -31,13 +29,16 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center mx-[10%] h-screen">
+      <SettingsButton />
+      <RubricButton />
+      <ScoresButton />
+
       {/* Box Containing Main Body */}
-      <div className="p-5 flex flex-col w-screen max-w-4xl h-full max-h-[90%] rounded-2xl border-[8px] border-[#0C2340] bg-white mx-auto font-sans">
-        <h1 className="text-2xl justify-center flex text-black font-bold mb-4">Pitch Your Ideas Here!</h1>
+      <div className="p-5 flex flex-col w-screen h-full rounded-2xl border-[#0C2340] border-4 bg-white mx-auto font-sans">
+        <h1 className="text-2xl justify-center flex text-black font-bold mb-4">PitchBot: By Samford University</h1>
 
         <CameraComponent />
-
 
         {/* Message Box */}
         <MessageBox

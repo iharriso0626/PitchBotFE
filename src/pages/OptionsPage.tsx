@@ -6,12 +6,12 @@ import InputsSelection from '../app/components/InputsSelection';
 
 const OptionsPage: React.FC = () => {
   return (
-    <div className='overflow-hidden flex items-center justify-center h-screen'>
+    <div className='overflow-hidden flex items-center justify-center'>
       {/* Box Containing Main Body */}
-      <div className="p-5 flex h-fill w-full max-w-4xl rounded-2xl border-[8px] border-[#0C2340] flex-col bg-white mx-auto font-sans">
+      <div className="p-5 flex  rounded-2xl  flex-col bg-[#C1C6C8]  font-sans">
         <h1 className="text-2xl justify-center flex font-bold text-black mb-4">Options</h1>
         {/* Main Box */}
-        <div className='flex w-full h-full space-y-2 flex-col'>
+        <div className='flex  space-y-2 flex-col'>
 
           {/* Light Mode/Dark Mode Box */}
           <div className='flex w-full h-auto items-center justify-center flex-col'>
