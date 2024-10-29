@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Image from 'next/image';
+import microphone_img from '../images/microphone_on.svg';
 
 declare global {
   interface Window {
@@ -93,8 +95,8 @@ const SpeechToText: React.FC<SpeechToTextProps> = ({ onTranscription, listening 
   }, [listening]);
 
   return (
-    <div>
-      <p>Transcript: {transcript}</p>
+    <div className="flex items-center">
+      
     </div>
   );
 };

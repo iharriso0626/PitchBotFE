@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import SpeechToText from './SpeechToText';
+import microphone_img from '../images/microphone_on.svg'
 
 interface MessageBoxProps {
   messages: { sender: string, text: string }[];
@@ -49,7 +51,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
   return (
     <div className="flex flex-col w-full h-full">
       {/* Speech Box */}
-      <div className="border max-h-auto border-gray-300 custom-scrollbar-hide p-3  overflow-scroll flex-grow overflow-y-scroll mb-4 rounded-xl">
+      <div className="border max-h-auto border-gray-300 custom-scrollbar-hide p-3 overflow-scroll flex-grow overflow-y-scroll mb-4 rounded-xl">
         {messages.map((message, index) => (
           <div key={index} className="mb-3 text-black">
             <strong>{message.sender}:</strong> <span>{message.text}</span>
@@ -59,7 +61,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
       </div>
 
       {/* Input box */}
-      <div className="flex">
+      <div className="flex items-center">
         <input
           type="text"
           value={input + interimText}
@@ -69,7 +71,13 @@ const MessageBox: React.FC<MessageBoxProps> = ({
         <button onClick={handleSendWithAI} className="p-2 rounded-r-lg bg-blue-500 text-white">
           Send
         </button>
+        <button onClick={toggleListening} className="ml-2 p-2 rounded bg-green-500 text-white">
+          {listening ? 'Stop' : 'Start'}
+        </button>
       </div>
+
+      {/* Speech to Text Component */}
+      <SpeechToText onTranscription={handleTranscription} listening={listening} />
     </div>
   );
 };
