@@ -24,7 +24,7 @@ const RubricButton: React.FC = () => {
             </button>
 
             <Modal isOpen={isOpen} onOpenChange={setIsOpen} className='fixed inset-0 flex items-center justify-center'>
-                <ModalContent className='w-[70%] h-[70%] bg-[#C1C6C8] rounded-lg shadow-lg relative'>
+                <ModalContent className='w-[90%] h-[90%] bg-[#C1C6C8] rounded-lg shadow-lg relative'>
                     <ModalHeader>
                         <button
                             onClick={handleClose}
@@ -33,7 +33,7 @@ const RubricButton: React.FC = () => {
                             
                         </button>
                     </ModalHeader>
-                    <ModalBody>
+                    <ModalBody className='flex'>
                         <ScoresPage />
                     </ModalBody>
                     <ModalFooter className='flex justify-end'>
