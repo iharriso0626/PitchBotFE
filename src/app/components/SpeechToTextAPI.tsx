@@ -1,11 +1,14 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { VideoSDK } from "@videosdk.live/js-sdk";
 
 interface SpeechToTextAPIProps {
   onTranscription: (text: string, isFinal: boolean) => void;
   listening: boolean;
 }
+
+const Constants = VideoSDK.Constants;
 
 const SpeechToTextAPI: React.FC<SpeechToTextAPIProps> = ({ onTranscription, listening }) => {
   const eventSourceRef = useRef<EventSource | null>(null);
@@ -13,10 +16,7 @@ const SpeechToTextAPI: React.FC<SpeechToTextAPIProps> = ({ onTranscription, list
   useEffect(() => {
     const startListening = async () => {
       try {
-        const response = await fetch('/api/transcription', {
-          method: 'POST',
-        });
-
+        const response = await fetch('/api/transcription', { method: 'POST' });
         if (response.ok) {
           eventSourceRef.current = new EventSource('/api/transcription');
 

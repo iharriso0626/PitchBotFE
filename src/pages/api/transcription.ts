@@ -1,20 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { AssemblyAI, RealtimeTranscript } from 'assemblyai';
+import { VideoSDK } from '@videosdk.live/js-sdk';
 import { spawn } from 'child_process';
-import path from 'path';
 
-const client = new AssemblyAI({
-  apiKey: 'aab5f916e1e6415092486934f733aa28',
+const client = new VideoSDK({
+  apiKey: 'aaea9e99-f8ed-4af7-adcb-eb96a7677465', // Replace with your VideoSDK API key
 });
 
 const transcriber = client.realtime.transcriber({
-  sampleRate: 16_000,
+  sampleRate: 16000,
 });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
-      transcriber.on('open', ({ sessionId }) => {
+      transcriber.on('open', ({ sessionId }: { sessionId: string }) => {
         console.log(`Session opened with ID: ${sessionId}`);
       });
 
@@ -26,12 +25,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         console.log('Session closed:', code, reason);
       });
 
-      transcriber.on('transcript', (transcript: RealtimeTranscript) => {
+      transcriber.on('transcript', (transcript: any) => {
         console.log('Received:', transcript);
 
         if (!transcript.text) return;
 
-        if (transcript.message_type === 'FinalTranscript') {
+        if (transcript.isFinal) {
           res.write(JSON.stringify({ text: transcript.text, isFinal: true }));
         } else {
           res.write(JSON.stringify({ text: transcript.text, isFinal: false }));
@@ -71,7 +70,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
     } catch (error) {
       console.error('Error:', error);
-      res.status(500).json({ error: 'Internal Server Error', details: error.message });
+      const err = error as Error;
+      res.status(500).json({ error: 'Internal Server Error', details: err.message });
     }
   } else {
     res.status(405).json({ error: 'Method Not Allowed' });

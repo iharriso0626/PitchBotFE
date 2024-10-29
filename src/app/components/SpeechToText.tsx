@@ -1,6 +1,5 @@
-// src/app/components/SpeechToText.tsx
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 declare global {
   interface Window {
@@ -13,13 +12,14 @@ type Commands = {
   [key: string]: CommandFunction;
 };
 
-interface SpeecToTextProps {
+interface SpeechToTextProps {
   onTranscription: (text: string, isFinal: boolean) => void;
   listening: boolean;
 }
 
-const SpeecToText: React.FC<SpeecToTextProps> = ({ onTranscription, listening }) => {
+const SpeechToText: React.FC<SpeechToTextProps> = ({ onTranscription, listening }) => {
   const recognitionRef = useRef<any>(null);
+  const [transcript, setTranscript] = useState<string>('');
 
   const commands: Commands = {
     "hello": () => alert("Hello!"),
@@ -51,9 +51,11 @@ const SpeecToText: React.FC<SpeecToTextProps> = ({ onTranscription, listening })
 
       if (finalTranscript) {
         onTranscription(finalTranscript, true);
+        setTranscript(finalTranscript);
       }
       if (interimTranscript) {
         onTranscription(interimTranscript, false);
+        setTranscript(interimTranscript);
       }
 
       for (const command in commands) {
@@ -90,7 +92,11 @@ const SpeecToText: React.FC<SpeecToTextProps> = ({ onTranscription, listening })
     }
   }, [listening]);
 
-  return null;
+  return (
+    <div>
+      <p>Transcript: {transcript}</p>
+    </div>
+  );
 };
 
-export default SpeecToText;
+export default SpeechToText;
