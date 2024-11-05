@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import SpeechToText from './apiComponents/SpeechToText';
-import microphone_img from '../images/microphone_on.svg'
+import SpeechToText from '../components/apiComponents/SpeechToText';
+import microphone_img from '../images/microphone_on.svg';
 
 interface MessageBoxProps {
   messages: { sender: string, text: string }[];
@@ -36,6 +36,22 @@ const MessageBox: React.FC<MessageBoxProps> = ({
     }
   };
 
+  const generateAudio = async (text: string) => {
+    try {
+      const response = await axios.post('http://localhost:5001/generate-audio-playht', {
+        text,
+        voice: 's3://voice-cloning-zero-shot/d9ff78ba-d016-47f6-b0ef-dd630f59414e/female-cs/manifest.json',  // Replace with the desired voice
+        audioFormat: 'mp3'  // Replace with the desired audio format
+      }, { responseType: 'blob' });
+
+      const audioUrl = URL.createObjectURL(response.data);
+      const audio = new Audio(audioUrl);
+      audio.play();
+    } catch (error) {
+      console.error('Error generating audio:', error);
+    }
+  };
+
   const handleSendWithAI = async () => {
     if (input.trim()) {
       const userMessage = input;
@@ -45,6 +61,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
       const botResponse = await sendMessageToAI(userMessage);
       setLoading(false);
       handleSend({ sender: 'Bot', text: botResponse }); // Update with bot response
+      generateAudio(botResponse); // Generate and play audio for the bot response
     }
   };
 

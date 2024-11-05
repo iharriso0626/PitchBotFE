@@ -9,11 +9,15 @@ import camera_off from '../images/camera_off.svg';
 
 import {  Modal,   ModalContent,   ModalHeader,   ModalBody,   ModalFooter, useDisclosure} from "@nextui-org/modal";
 
+
+
 const CameraComponent: React.FC = () => {
   const userVideoRef = useRef<HTMLVideoElement>(null);
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [videoEnabled, setVideoEnabled] = useState(true);
   const [audioEnabled, setAudioEnabled] = useState(true);
+  const [listening, setListening] = useState(false);
+  
   
 
   useEffect(() => {
@@ -85,7 +89,9 @@ const CameraComponent: React.FC = () => {
           src={avatarimg}
           alt="Avatar"
           className='w-[100%] h-[100%] text-white'
-        />
+          style={{
+            animation: listening ? 'talking 1s infinite' : 'none'
+          }} />
         </div>
       </div>
     </div>
