@@ -9,8 +9,8 @@ const TestTranscription: React.FC = () => {
   useEffect(() => {
     // Dynamically import the components only in the browser environment
     if (typeof window !== 'undefined') {
-      import('../app/components/SpeechToText').then((module) => setSpeechToText(() => module.default));
-      import('../app/components/SpeechToTextAPI').then((module) => setSpeechToTextAPI(() => module.default));
+      import('../app/components/apiComponents/SpeechToText').then((module) => setSpeechToText(() => module.default));
+      import('../app/components/apiComponents/SpeechToTextAPI').then((module) => setSpeechToTextAPI(() => module.default));
     }
   }, []);
 

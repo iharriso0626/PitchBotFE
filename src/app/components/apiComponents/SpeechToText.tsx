@@ -1,7 +1,5 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import Image from 'next/image';
-import microphone_img from '../images/microphone_on.svg';
 
 declare global {
   interface Window {

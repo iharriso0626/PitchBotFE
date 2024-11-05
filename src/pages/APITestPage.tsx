@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SpeechToTextAPI from '@/app/components/SpeechToTextAPI';
+import SpeechToTextAPI from '@/app/components/apiComponents/SpeechToTextAPI';
 
 const APITestPage: React.FC = () => {
   const [input, setInput] = useState('');
