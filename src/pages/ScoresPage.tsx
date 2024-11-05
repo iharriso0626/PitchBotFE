@@ -46,9 +46,9 @@ const ScoresPage: React.FC = () => {
   };
 
   return (
-    <div className='overflow-hidden flex items-center justify-center h-full w-full'>
+    <div className='overflow-hidden flex items-center justify-center h-full w-fill'>
       {/* Box Containing Main Body */}
-      <div className="flex rounded-2xl border-[8px]  h-full w-full border-[#0C2340] flex-col bg-white font-sans p-5">
+      <div className="flex rounded-2xl border-[8px] h-full w-full border-[#0C2340] flex-col bg-white font-sans p-5">
         <h1 className="text-2xl justify-center flex font-bold text-black mb-4">See Your Scores Here!</h1>
         
         {/* Box Containing Main Body */}
@@ -86,7 +86,7 @@ const ScoresPage: React.FC = () => {
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
-            className='flex-col flex'
+            className='flex flex-col items-center'
           />
         </div>
       </div>

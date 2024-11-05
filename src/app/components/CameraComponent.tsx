@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
+import avatarimg from '../images/avatar.svg';
 import microphone_mute from '../images/microphone_mute.svg';
 import microphone_on from '../images/microphone_on.svg';
 import camera_on from '../images/camera_on.svg';
@@ -80,7 +81,11 @@ const CameraComponent: React.FC = () => {
 
         {/* AI Camera box */}
         <div className='w-[450px] h-[350px] border-[5px] border-[#0C2340] flex rounded-2xl bg-black ml-auto mr-5 text-white'>
-          <h1 className='flex items-center justify-center h-full w-full'>AI Camera Here</h1>
+        <Image
+          src={avatarimg}
+          alt="Avatar"
+          className='w-[100%] h-[100%] text-white'
+        />
         </div>
       </div>
     </div>
