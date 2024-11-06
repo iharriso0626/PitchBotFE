@@ -12,13 +12,21 @@ import Lottie from 'react-lottie';
 
 interface CameraComponentProps {
   listening: boolean;
+  videoEnabled: boolean;
+  audioEnabled: boolean;
+  setVideoEnabled: (enabled: boolean) => void;
+  setAudioEnabled: (enabled: boolean) => void;
 }
 
-const CameraComponent: React.FC<CameraComponentProps> = ({ listening }) => {
+const CameraComponent: React.FC<CameraComponentProps> = ({
+  listening,
+  videoEnabled,
+  audioEnabled,
+  setVideoEnabled,
+  setAudioEnabled,
+}) => {
   const userVideoRef = useRef<HTMLVideoElement>(null);
   const [stream, setStream] = useState<MediaStream | null>(null);
-  const [videoEnabled, setVideoEnabled] = useState(true);
-  const [audioEnabled, setAudioEnabled] = useState(true);
 
   useEffect(() => {
     const startUserVideo = async () => {
@@ -66,18 +74,18 @@ const CameraComponent: React.FC<CameraComponentProps> = ({ listening }) => {
             className='flex items-center justify-center h-full w-full'
           />
           <div className='absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2'>
-            <button onClick={toggleVideo} className='p-3 rounded-full border-[#6f04bd] border-2 bg-white text-white'>
+            <button onClick={toggleVideo} className={`p-3 rounded-full border-[#6f04bd] border-2 ${videoEnabled ? 'bg-red-500' : 'bg-green-500'} text-white`} >
               <Image
-                src={videoEnabled ? camera_on : camera_off}
+                src={videoEnabled ? camera_off : camera_on}
                 alt={videoEnabled ? 'Camera On' : 'Camera Off'}
                 className='w-6 h-6'
               />
             </button>
-            <button onClick={toggleAudio} className='p-3 rounded-full bg-white border-[#6f04bd] border-2 text-white'>
+            <button onClick={toggleAudio} className={`p-3 rounded-full border-[#6f04bd] border-2 ${audioEnabled ? 'bg-red-500' : 'bg-green-500'} text-white`}>
               <Image
-                src={audioEnabled ? microphone_on : microphone_mute}
-                alt={audioEnabled ? 'Microphone On' : 'Microphone Mute'}
-                className='w-6 h-6'
+              src={audioEnabled ? microphone_mute : microphone_on}
+              alt={audioEnabled ? 'Microphone On' : 'Microphone Mute'}
+              className='w-6 h-6'
               />
             </button>
           </div>
