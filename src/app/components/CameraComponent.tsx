@@ -83,13 +83,10 @@ const CameraComponent: React.FC<CameraComponentProps> = ({ listening }) => {
 
         {/* AI Camera box */}
         <div className='w-[450px] h-[350px] border-[5px] border-[#0C2340] flex rounded-2xl bg-black ml-auto mr-5 text-white'>
-          <Image
+        <Image
             src={avatarimg}
             alt="Avatar"
-            className='w-[100%] h-[100%] text-white'
-            style={{
-              animation: listening ? 'mouthMovement 1s infinite' : 'none'
-            }}
+            className={`w-[100%] h-[100%] text-white ${listening ? 'talking' : ''}`}
           />
         </div>
       </div>

@@ -1,34 +1,25 @@
-/* General Styles for the SVG */
+/* Set the dimensions for the SVG to be responsive if needed */
 svg {
-  width: 800px;
-  height: 800px;
-  animation: talking 2s linear infinite; /* Existing rotation and scaling animation */
+  width: 100%;
+  height: auto;
 }
 
-/* Talking Effect for the Mouth */
+/* Talking effect for the mouth, applied directly to #Path_10 */
 #Path_10 {
-  animation: mouthMovement 1s ease-in-out infinite;
-  transform-origin: center; /* Ensures smooth pivot for the mouth */
+  transform-origin: center;
 }
 
-/* Keyframes for the Rotation and Scaling */
-@keyframes talking {
-  0% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.1) rotate(180deg); }
-  100% { transform: scale(1) rotate(360deg); }
-}
-
-/* Keyframes for the Talking Effect (Mouth Movement) */
+/* Keyframes for mouth opening and closing using scaleY */
 @keyframes mouthMovement {
   0%, 100% {
-    d: path("M155,241a5,5,0,0,1-10,0Z"); /* Mouth closed */
+    transform: scaleY(1); /* Mouth closed */
   }
   50% {
-    d: path("M155,243a7,7,0,0,1-10,0Z"); /* Mouth open wider */
+    transform: scaleY(1.2); /* Mouth opens wider */
   }
 }
 
-/* Optional: Pause animation on hover */
-#Path_10:hover {
-  animation-play-state: paused;
+/* Apply mouth movement animation only when listening */
+.talking #Path_10 {
+  animation: mouthMovement 1s ease-in-out infinite;
 }
