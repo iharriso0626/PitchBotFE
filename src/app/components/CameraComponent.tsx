@@ -6,7 +6,9 @@ import microphone_mute from '../images/microphone_mute.svg';
 import microphone_on from '../images/microphone_on.svg';
 import camera_on from '../images/camera_on.svg';
 import camera_off from '../images/camera_off.svg';
+import Avatar from '../lotties/AvatarLottie.json';
 import '../styles/styles.css';
+import Lottie from 'react-lottie';
 
 interface CameraComponentProps {
   listening: boolean;
@@ -83,10 +85,17 @@ const CameraComponent: React.FC<CameraComponentProps> = ({ listening }) => {
 
         {/* AI Camera box */}
         <div className='w-[450px] h-[350px] border-[5px] border-[#0C2340] flex rounded-2xl bg-black ml-auto mr-5 text-white'>
-        <Image
-            src={avatarimg}
-            alt="Avatar"
-            className={`w-[100%] h-[100%] text-white ${listening ? 'talking' : ''}`}
+          <Lottie 
+            options={{
+              loop: true,
+              autoplay: false,
+              animationData: Avatar,
+              rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+              }
+            }}
+            isStopped={!listening}
+            isPaused={!listening}
           />
         </div>
       </div>
