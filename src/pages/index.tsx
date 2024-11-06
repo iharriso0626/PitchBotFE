@@ -1,12 +1,56 @@
-import Link from 'next/link';
-import Sidebar from '../app/components/sidebar';
+import React, { useState } from 'react';
+import MessageBox from '../app/components/MessageBox';
+import CameraComponent from '../app/components/CameraComponent';
+import SettingsButton from '../app/components/SideButtons/SettingsButton';
+import RubricButton from '../app/components/SideButtons/RubricButton';
+import ScoresButton from '../app/components/SideButtons/ScoresButton';
 
-const Home = () => {
+const Home: React.FC = () => {
+  const [messages, setMessages] = useState<{ sender: string, text: string }[]>([]);
+  const [input, setInput] = useState('');
+  const [listening, setListening] = useState(false);
+  const [interimText, setInterimText] = useState('');
+
+  const handleSend = (message: { sender: string, text: string }) => {
+    setMessages((prevMessages) => [...prevMessages, message]);
+  };
+
+  const toggleListening = () => {
+    setListening(!listening);
+  };
+
+  const handleTranscription = (text: string, isFinal: boolean) => {
+    if (isFinal) {
+      setInput((prevInput) => prevInput + ' ' + text);
+      setInterimText('');
+    } else {
+      setInterimText(text);
+    }
+  };
+
   return (
-    <div className='flex w-screen h-screen flex-row items-center justify-center'>
-      <div className='w-[80%] h-screen bg-white'>
-        <h1 className='justify-center flex mt-5 text-black'>Welcome to Pitch Bot!</h1>
-        <h1 className='flex justify-center text-black'>This is the home page.</h1>
+    <div className="flex items-center justify-center mx-[10%] h-screen">
+      <SettingsButton />
+      <RubricButton />
+      <ScoresButton />
+
+      {/* Box Containing Main Body */}
+      <div className="p-5 flex flex-col w-screen h-full rounded-2xl border-[#0C2340] border-4 bg-white mx-auto font-sans">
+        <h1 className="text-2xl justify-center flex text-black font-bold mb-4">PitchBot: By Samford University</h1>
+
+        <CameraComponent listening={listening} />
+
+        {/* Message Box */}
+        <MessageBox
+          messages={messages}
+          input={input}
+          interimText={interimText}
+          listening={listening}
+          handleSend={handleSend}
+          toggleListening={toggleListening}
+          handleTranscription={handleTranscription}
+          setInput={setInput}
+        />
       </div>
     </div>
   );

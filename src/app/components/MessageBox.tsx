@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import SpeechToText from '../components/apiComponents/SpeechToText';
-import microphone_img from '../images/microphone_on.svg';
 
 interface MessageBoxProps {
   messages: { sender: string, text: string }[];

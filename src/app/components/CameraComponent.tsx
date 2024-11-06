@@ -6,19 +6,17 @@ import microphone_mute from '../images/microphone_mute.svg';
 import microphone_on from '../images/microphone_on.svg';
 import camera_on from '../images/camera_on.svg';
 import camera_off from '../images/camera_off.svg';
+import '../styles/styles.css';
 
-import {  Modal,   ModalContent,   ModalHeader,   ModalBody,   ModalFooter, useDisclosure} from "@nextui-org/modal";
+interface CameraComponentProps {
+  listening: boolean;
+}
 
-
-
-const CameraComponent: React.FC = () => {
+const CameraComponent: React.FC<CameraComponentProps> = ({ listening }) => {
   const userVideoRef = useRef<HTMLVideoElement>(null);
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [videoEnabled, setVideoEnabled] = useState(true);
   const [audioEnabled, setAudioEnabled] = useState(true);
-  const [listening, setListening] = useState(false);
-  
-  
 
   useEffect(() => {
     const startUserVideo = async () => {
@@ -60,38 +58,39 @@ const CameraComponent: React.FC = () => {
       <div className='flex flex-row relative justify-center items-center gap-1 pb-[1%]'>
         {/* User Camera box */}
         <div className='w-[450px] h-[350px] border-[5px] border-[#0C2340] rounded-2xl bg-black ml-5 text-white relative'>
-    <video
-      ref={userVideoRef}
-      autoPlay
-      className='flex items-center justify-center h-full w-full'
-    />
-    <div className='absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2'>
-      <button onClick={toggleVideo} className='p-3 rounded-full border-[#6f04bd] border-2 bg-white text-white'>
-        <Image
-          src={videoEnabled ? camera_on : camera_off}
-          alt={videoEnabled ? 'Camera On' : 'Camera Off'}
-          className='w-6 h-6'
-        />
-      </button>
-      <button onClick={toggleAudio} className='p-3 rounded-full bg-white border-[#6f04bd] border-2 text-white'>
-        <Image
-          src={audioEnabled ? microphone_on : microphone_mute}
-          alt={audioEnabled ? 'Microphone On' : 'Microphone Mute'}
-          className='w-6 h-6'
-        />
-      </button>
-    </div>
+          <video
+            ref={userVideoRef}
+            autoPlay
+            className='flex items-center justify-center h-full w-full'
+          />
+          <div className='absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2'>
+            <button onClick={toggleVideo} className='p-3 rounded-full border-[#6f04bd] border-2 bg-white text-white'>
+              <Image
+                src={videoEnabled ? camera_on : camera_off}
+                alt={videoEnabled ? 'Camera On' : 'Camera Off'}
+                className='w-6 h-6'
+              />
+            </button>
+            <button onClick={toggleAudio} className='p-3 rounded-full bg-white border-[#6f04bd] border-2 text-white'>
+              <Image
+                src={audioEnabled ? microphone_on : microphone_mute}
+                alt={audioEnabled ? 'Microphone On' : 'Microphone Mute'}
+                className='w-6 h-6'
+              />
+            </button>
+          </div>
         </div>
 
         {/* AI Camera box */}
         <div className='w-[450px] h-[350px] border-[5px] border-[#0C2340] flex rounded-2xl bg-black ml-auto mr-5 text-white'>
-        <Image
-          src={avatarimg}
-          alt="Avatar"
-          className='w-[100%] h-[100%] text-white'
-          style={{
-            animation: listening ? 'talking 1s infinite' : 'none'
-          }} />
+          <Image
+            src={avatarimg}
+            alt="Avatar"
+            className='w-[100%] h-[100%] text-white'
+            style={{
+              animation: listening ? 'mouthMovement 1s infinite' : 'none'
+            }}
+          />
         </div>
       </div>
     </div>
