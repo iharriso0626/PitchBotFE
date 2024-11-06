@@ -84,7 +84,7 @@ const CameraComponent: React.FC<CameraComponentProps> = ({ listening }) => {
         </div>
 
         {/* AI Camera box */}
-        <div className='w-[450px] h-[350px] border-[5px] border-[#0C2340] flex rounded-2xl bg-black ml-auto mr-5 text-white'>
+        <div className='w-[450px] h-[350px] border-[5px] border-[#0C2340] flex rounded-2xl bg-black ml-auto mr-5 text-white' style={{ pointerEvents: 'none' }}>
           <Lottie 
             options={{
               loop: true,
