@@ -28,7 +28,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
   const sendMessageToAI = async (message: string) => {
     try {
       const response = await axios.post('http://localhost:5001/generate', { prompt: message });
-      return response.data.text;
+      return response.data.generated_text;
     } catch (error) {
       console.error('Error generating text:', error);
       return 'Error generating response';
@@ -61,6 +61,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
       setLoading(false);
       handleSend({ sender: 'Bot', text: botResponse }); // Update with bot response
       generateAudio(botResponse); // Generate and play audio for the bot response
+      console.log('Sending message:', input);
     }
   };
 
