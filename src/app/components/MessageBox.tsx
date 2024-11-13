@@ -61,7 +61,6 @@ const MessageBox: React.FC<MessageBoxProps> = ({
       setLoading(false);
       handleSend({ sender: 'Bot', text: botResponse }); // Update with bot response
       generateAudio(botResponse); // Generate and play audio for the bot response
-      console.log('Sending message:', input);
     }
   };
 

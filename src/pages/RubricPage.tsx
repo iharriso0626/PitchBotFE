@@ -1,5 +1,6 @@
 // src/pages/RubricPage.tsx
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 
 const RubricPage: React.FC = () => {
@@ -13,6 +14,7 @@ const RubricPage: React.FC = () => {
         <h1 className="text-2xl  justify-center flex font-bold text-black mb-4">See Your Rubric Here!</h1>
       </div>
         
+    
     </div>
   );
 };
