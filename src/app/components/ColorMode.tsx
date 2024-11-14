@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const ColorMode: React.FC = () => {
+import OptionsPage from '../../pages/OptionsPage';
+
+function ColorMode() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div className='flex w-full h-auto items-center justify-center flex-col'>  
-      <label className="relative inline-flex items-center cursor-pointer">
-        <input type="checkbox" className="sr-only peer" defaultChecked />
-        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-    </label>
-    </div>
+    <div 
+      style={{backgroundColor: darkMode ? '#121212' : '#ffffff',
+        color: darkMode ? '#ffffff' : '#000000',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        transition: 'all 0.3s ease',
+      }}
+    >
+      <h1>
+      {darkMode ? 'Dark Mode' : 'Light Mode'}</h1><button onClick={toggleDarkMode}>
+        Switch to {darkMode ? 'Light' : 'Dark'} Mode
+      </button>
+      {/* Pass darkMode and toggleDarkMode as props */}
+      <OptionsPage darkMode={darkMode} /></div>
   );
-};
+}
 
 export default ColorMode;
