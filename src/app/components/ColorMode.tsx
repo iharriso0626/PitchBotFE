@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-
 import OptionsPage from '../../pages/OptionsPage';
 
 function ColorMode() {
   const [darkMode, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    setDarkMode(!darkMode); 
   };
 
   return (
@@ -22,11 +21,13 @@ function ColorMode() {
       }}
     >
       <h1>
-      {darkMode ? 'Dark Mode' : 'Light Mode'}</h1><button onClick={toggleDarkMode}>
+      {darkMode ? 'Dark Mode' : 'Light Mode'}</h1>
+      <button onClick={toggleDarkMode}>
         Switch to {darkMode ? 'Light' : 'Dark'} Mode
       </button>
       {/* Pass darkMode and toggleDarkMode as props */}
-      <OptionsPage darkMode={darkMode} /></div>
+      <OptionsPage darkMode={darkMode} />
+      </div>
   );
 }
 

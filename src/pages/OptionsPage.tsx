@@ -7,16 +7,23 @@ import { useState } from "react";
 
 const OptionsPage: React.FC = () => {
 
+  interface OptionsPageProps {
+    darkMode: boolean;
+  }
+
   function ChildComponent({ darkMode }) {
     return (
-      <divstyle={{backgroundColor: darkMode ? '#333333' : '#f4f4f4',
+      <div
+      style={{backgroundColor: darkMode ? '#333333' : '#f4f4f4',
           color: darkMode ? '#ffffff' : '#000000',
           padding: '20px',
           borderRadius: '8px',
           transition: 'all 0.3s ease',
         }}
-        ><p>This is a child component in {darkMode ? 'Dark' : 'Light'} Mode.</p></div>  );
-      }export default ChildComponent;
+        ><p>This is a child component in {darkMode ? 'Dark' : 'Light'} Mode.</p>
+        </div>
+        );
+      }
 
   return (
     <div className='overflow-hidden flex items-center justify-center'>
@@ -28,10 +35,9 @@ const OptionsPage: React.FC = () => {
 
           {/* Light Mode/Dark Mode Box */}
           <div className='flex w-full h-auto items-center justify-center flex-col'>
-            <button onClick={toggleDarkMode} className="p-2 bg-gray-200 dark:bg-gray-800 rounded">
+            <button onClick={setDarkMode} className="p-2 bg-gray-200 dark:bg-gray-800 rounded">
               Toggle Dark Mode
             </button>
-            <ColorMode isDarkMode={isDarkMode} />
           </div>
           
           {/* Volume Slider Box */}
