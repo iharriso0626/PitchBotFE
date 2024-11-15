@@ -82,6 +82,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
           type="text"
           value={input + interimText}
           onChange={(e) => setInput(e.target.value)}
+          placeholder='Type a message...'
           className="flex-grow p-2 rounded-l-lg border overflow-scroll custom-scroll-hidden text-black border-gray-300"
         />
         <button onClick={handleSendWithAI} className="p-2 rounded-r-lg bg-blue-500 text-white">
