@@ -34,9 +34,9 @@ const StartModal: React.FC = () => {
 
 
         {/* Get username from user */}
-        <div className=' flex border-b-2 flex-col border-black m-2'>
+        <div className=' flex border-b-2 flex-col border-black m-2 outline-none border-0'>
           <p className='text-black'>Please enter your Samford Username:</p>
-          <Input placeholder='Example: bgatlin' className='text-black' value={username} onChange={(e) => setUsername(e.target.value)}/>
+          <Input placeholder='Example: bgatlin' className='text-black outline-none border-0' value={username} onChange={(e) => setUsername(e.target.value)}/>
         </div>
 
 

@@ -28,7 +28,12 @@ const MessageBox: React.FC<MessageBoxProps> = ({
   const sendMessageToAI = async (message: string) => {
     try {
       const response = await axios.post('http://localhost:5001/generate', { prompt: message });
-      return response.data.generated_text;
+      const generatedTextArray = response.data.generated_text;
+      if (generatedTextArray && generatedTextArray.length > 1) {
+        return generatedTextArray[1].content;
+      } else {
+        return 'Error: Unexpected response format';
+      }
     } catch (error) {
       console.error('Error generating text:', error);
       return 'Error generating response';
