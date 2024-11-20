@@ -47,7 +47,6 @@ const Home: React.FC = () => {
 
       <SettingsButton />
       <RubricButton />
-      <ScoresButton />
 
       {/* Box Containing Main Body */}
       <div className="p-5 flex flex-col w-screen h-full rounded-2xl border-[#0C2340] border-4 bg-white mx-auto font-sans">
