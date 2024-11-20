@@ -44,7 +44,6 @@ const Home: React.FC = () => {
   return (
     <div className="flex items-center justify-center mx-[10%] h-screen">
       <StartModal />
-
       <SettingsButton />
       <RubricButton />
 
