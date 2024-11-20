@@ -5,6 +5,7 @@ import SettingsButton from '../app/components/SideButtons/SettingsButton';
 import RubricButton from '../app/components/SideButtons/RubricButton';
 import ScoresButton from '../app/components/SideButtons/ScoresButton';
 import StartModal from '../app/components/StartModal';
+import CloseModal from '../app/components/CloseModal';
 
 const Home: React.FC = () => {
   const [messages, setMessages] = useState<{ sender: string, text: string }[]>([]);
@@ -13,6 +14,7 @@ const Home: React.FC = () => {
   const [videoEnabled, setVideoEnabled] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(false);
   const [interimText, setInterimText] = useState('');
+  const [isCloseModalVisible, setIsCloseModalVisible] = useState(false);
 
   const handleSend = (message: { sender: string, text: string }) => {
     setMessages((prevMessages) => [...prevMessages, message]);
@@ -29,6 +31,14 @@ const Home: React.FC = () => {
     } else {
       setInterimText(text);
     }
+  };
+
+  const handleOpenCloseModal = () => {
+    setIsCloseModalVisible(true);
+  };
+
+  const handleCloseCloseModal = () => {
+    setIsCloseModalVisible(false);
   };
 
   return (
@@ -49,6 +59,7 @@ const Home: React.FC = () => {
           audioEnabled={audioEnabled}
           setVideoEnabled={setVideoEnabled}
           setAudioEnabled={setAudioEnabled}
+          toggleListening={toggleListening}
         />
 
         {/* Message Box */}
@@ -61,8 +72,11 @@ const Home: React.FC = () => {
           toggleListening={toggleListening}
           handleTranscription={handleTranscription}
           setInput={setInput}
+          onOpenCloseModal={handleOpenCloseModal} // Pass the function to open the CloseModal
         />
       </div>
+
+      <CloseModal isVisible={isCloseModalVisible} onClose={handleCloseCloseModal} messages={messages} />
     </div>
   );
 };

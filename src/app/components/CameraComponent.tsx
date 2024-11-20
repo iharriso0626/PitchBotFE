@@ -16,6 +16,7 @@ interface CameraComponentProps {
   audioEnabled: boolean;
   setVideoEnabled: (enabled: boolean) => void;
   setAudioEnabled: (enabled: boolean) => void;
+  toggleListening: () => void;
 }
 
 const CameraComponent: React.FC<CameraComponentProps> = ({
@@ -24,6 +25,7 @@ const CameraComponent: React.FC<CameraComponentProps> = ({
   audioEnabled,
   setVideoEnabled,
   setAudioEnabled,
+  toggleListening,
 }) => {
   const userVideoRef = useRef<HTMLVideoElement>(null);
   const [stream, setStream] = useState<MediaStream | null>(null);
@@ -81,11 +83,11 @@ const CameraComponent: React.FC<CameraComponentProps> = ({
                 className='w-6 h-6'
               />
             </button>
-            <button onClick={toggleAudio} className={`p-3 rounded-full border-[#6f04bd] border-2 ${audioEnabled ? 'bg-red-500' : 'bg-green-500'} text-white`}>
+            <button onClick={() => { toggleAudio(); toggleListening(); }} className={`p-3 rounded-full border-[#6f04bd] border-2 ${audioEnabled ? 'bg-green-500' : 'bg-red-500'} text-white`}>
               <Image
-              src={audioEnabled ? microphone_mute : microphone_on}
-              alt={audioEnabled ? 'Microphone On' : 'Microphone Mute'}
-              className='w-6 h-6'
+                src={audioEnabled ? microphone_on : microphone_mute}
+                alt={audioEnabled ? 'Microphone On' : 'Microphone Mute'}
+                className='w-6 h-6'
               />
             </button>
           </div>

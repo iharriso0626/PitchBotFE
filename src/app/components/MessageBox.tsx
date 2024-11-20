@@ -11,6 +11,7 @@ interface MessageBoxProps {
   toggleListening: () => void;
   handleTranscription: (text: string, isFinal: boolean) => void;
   setInput: (value: string) => void;
+  onOpenCloseModal: () => void; // Add the prop to open the CloseModal
 }
 
 const MessageBox: React.FC<MessageBoxProps> = ({
@@ -22,37 +23,17 @@ const MessageBox: React.FC<MessageBoxProps> = ({
   toggleListening,
   handleTranscription,
   setInput,
+  onOpenCloseModal,
 }) => {
   const [loading, setLoading] = useState(false);
 
   const sendMessageToAI = async (message: string) => {
     try {
       const response = await axios.post('http://localhost:5001/generate', { prompt: message });
-      const generatedTextArray = response.data.generated_text;
-      if (generatedTextArray && generatedTextArray.length > 1) {
-        return generatedTextArray[1].content;
-      } else {
-        return 'Error: Unexpected response format';
-      }
+      return response.data.generated_text;
     } catch (error) {
       console.error('Error generating text:', error);
       return 'Error generating response';
-    }
-  };
-
-  const generateAudio = async (text: string) => {
-    try {
-      const response = await axios.post('http://localhost:5001/generate-audio-playht', {
-        text,
-        voice: 's3://voice-cloning-zero-shot/d9ff78ba-d016-47f6-b0ef-dd630f59414e/female-cs/manifest.json',  // Replace with the desired voice
-        audioFormat: 'mp3'  // Replace with the desired audio format
-      }, { responseType: 'blob' });
-
-      const audioUrl = URL.createObjectURL(response.data);
-      const audio = new Audio(audioUrl);
-      audio.play();
-    } catch (error) {
-      console.error('Error generating audio:', error);
     }
   };
 
@@ -65,12 +46,12 @@ const MessageBox: React.FC<MessageBoxProps> = ({
       const botResponse = await sendMessageToAI(userMessage);
       setLoading(false);
       handleSend({ sender: 'Bot', text: botResponse }); // Update with bot response
-      generateAudio(botResponse); // Generate and play audio for the bot response
+       // Generate and play audio for the bot response
     }
   };
 
   return (
-    <div className="flex flex-col w-full h-full ">
+    <div className="flex flex-col w-full h-full">
       {/* Speech Box */}
       <div className="border max-h-auto border-gray-300 max-h-[280px] custom-scrollbar-hide p-3 overflow-scroll flex-grow overflow-y-scroll mb-4 rounded-xl">
         {messages.map((message, index) => (
@@ -93,8 +74,8 @@ const MessageBox: React.FC<MessageBoxProps> = ({
         <button onClick={handleSendWithAI} className="p-2 rounded-r-lg bg-blue-500 text-white">
           Send
         </button>
-        <button onClick={toggleListening} className="ml-2 p-2 rounded bg-green-500 text-white">
-          {listening ? 'Stop' : 'Start'}
+        <button onClick={() => { onOpenCloseModal(); }} className="ml-2 p-2 rounded bg-red-500 text-white">
+          Stop
         </button>
       </div>
 
