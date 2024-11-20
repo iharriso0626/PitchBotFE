@@ -23,12 +23,6 @@ function ColorMode() {
       <h1>
       {darkMode ? 'Dark Mode' : 'Light Mode'}</h1>
       <button onClick={toggleDarkMode}>
-        Switch to {darkMode ? 'Light' : 'Dark'} Mode
-      </button>
-      {/* Pass darkMode and toggleDarkMode as props */}
-      <OptionsPage darkMode={darkMode} />
-      </div>
-  );
-}
-
+        Switch to {darkMode ? 'Light' : 'Dark'} 
+        
 export default ColorMode;
