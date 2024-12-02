@@ -5,6 +5,7 @@ import microphone_mute from '../images/microphone_mute.svg';
 import microphone_on from '../images/microphone_on.svg';
 import camera_on from '../images/camera_on.svg';
 import camera_off from '../images/camera_off.svg';
+import { Select, MenuItem, FormControl, InputLabel } from '@mui/material'; //for the select tags
 
 import {  Modal,   ModalContent,   ModalHeader,   ModalBody,   ModalFooter, useDisclosure} from "@nextui-org/modal";
 
@@ -62,18 +63,22 @@ const CameraComponent: React.FC = () => {
     />
     <div className='absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2'>
       <button onClick={toggleVideo} className='p-3 rounded-full border-[#6f04bd] border-2 bg-white text-white'>
+        <select>
         <Image
           src={videoEnabled ? camera_on : camera_off}
           alt={videoEnabled ? 'Camera On' : 'Camera Off'}
           className='w-6 h-6'
         />
+        </select>
       </button>
       <button onClick={toggleAudio} className='p-3 rounded-full bg-white border-[#6f04bd] border-2 text-white'>
+        <select>
         <Image
           src={audioEnabled ? microphone_on : microphone_mute}
           alt={audioEnabled ? 'Microphone On' : 'Microphone Mute'}
           className='w-6 h-6'
         />
+        </select>
       </button>
     </div>
         </div>
@@ -88,3 +93,7 @@ const CameraComponent: React.FC = () => {
 };
 
 export default CameraComponent;
+
+
+
+
