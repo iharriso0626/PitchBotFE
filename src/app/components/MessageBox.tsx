@@ -55,7 +55,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
       {/* Speech Box */}
       <div className="border max-h-auto border-gray-300 max-h-[280px] custom-scrollbar-hide p-3 overflow-scroll flex-grow overflow-y-scroll mb-4 rounded-xl">
         {messages.map((message, index) => (
-          <div key={index} className="mb-3 text-black">
+          <div key={index} className="mb-3 text-white">
             <strong>{message.sender}:</strong> <span>{message.text}</span>
           </div>
         ))}

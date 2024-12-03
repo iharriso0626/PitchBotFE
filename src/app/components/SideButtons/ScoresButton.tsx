@@ -13,7 +13,7 @@ const RubricButton: React.FC = () => {
     return (
         <>
             <button
-                className="h-[10%] w-[5%] rounded-full bg-transparent border-2 border-black text-black absolute top-[35%] left-[2.5%] flex items-center justify-center"
+                className="h-[10%] w-[5%] rounded-full bg-transparent border-2 border-red-500 text-black absolute top-[35%] left-[2.5%] flex items-center justify-center"
                 onClick={handleOpen}
             >
                 <Image

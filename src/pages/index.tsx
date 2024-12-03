@@ -6,6 +6,8 @@ import RubricButton from '../app/components/SideButtons/RubricButton';
 import ScoresButton from '../app/components/SideButtons/ScoresButton';
 import StartModal from '../app/components/StartModal';
 import CloseModal from '../app/components/CloseModal';
+import Image from 'next/image';
+
 
 const Home: React.FC = () => {
   const [messages, setMessages] = useState<{ sender: string, text: string }[]>([]);
@@ -48,9 +50,11 @@ const Home: React.FC = () => {
       <RubricButton />
 
       {/* Box Containing Main Body */}
-      <div className="p-5 flex flex-col w-screen h-full rounded-2xl border-[#0C2340] border-4 bg-white mx-auto font-sans">
-        <h1 className="text-2xl justify-center flex text-black font-bold mb-4">PitchBot: By Samford University</h1>
-
+      <div className="p-5 flex flex-col w-screen h-full rounded-2xl border-[#0C2340] border-4 bg-blue-900 mx-auto font-sans">
+        <h1 className="text-2xl justify-center flex text-white font-bold mb-4">PitchBot</h1>
+        <h1 className="text-2xl justify-center flex text-white font-bold mb-4">Samford University</h1>
+        
+       
         <CameraComponent
           listening={listening}
           videoEnabled={videoEnabled}
@@ -59,6 +63,13 @@ const Home: React.FC = () => {
           setAudioEnabled={setAudioEnabled}
           toggleListening={toggleListening}
         />
+        <Image
+        src='/samford-logo.png'
+        alt='Samford LOGO'
+        width={175}
+        height={200}
+        className='absolute top-0 left-25 object-contain'
+        ></Image>
 
         {/* Message Box */}
         <MessageBox
@@ -73,9 +84,11 @@ const Home: React.FC = () => {
           onOpenCloseModal={handleOpenCloseModal} // Pass the function to open the CloseModal
         />
       </div>
+      
 
       <CloseModal isVisible={isCloseModalVisible} onClose={handleCloseCloseModal} messages={messages} />
     </div>
+    
   );
 };
 

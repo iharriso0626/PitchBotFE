@@ -13,13 +13,13 @@ const RubricButton: React.FC = () => {
     return (
         <>
             <button
-                className="h-[10%] w-[5%] rounded-full bg-transparent border-2 border-black text-black absolute top-[20%] left-[2.5%] flex items-center justify-center"
+                className="h-[10%] w-[5%] rounded-full bg-transparent border-2 border-red-500 text-black absolute top-[20%] left-[2.5%] flex items-center justify-center"
                 onClick={handleOpen}
             >
                 <Image
                     src={rubricimg}
                     alt="Settings"
-                    className='w-[90%] h-[90%] text-black'
+                    className='w-[90%] h-[90%] text-red-500'
                 />
             </button>
 
