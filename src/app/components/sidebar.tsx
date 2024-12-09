@@ -7,6 +7,7 @@ import Link from  'next/link';
 const Sidebar = () => {
   return (
     <div className='w-[15%]  h-screen bg-[#C1C6C8]   p-2 flex flex-col  border-[#0C2340]'>
+       
        {/* Name Box */}
       <div className='flex h-[15%] w-min rounded-xl border-[#0C2340] border-[3px] bg-white items-center justify-center text-[50px]'>
           <h1 className='p-2 px-3  bg-white text-black rounded-xl'>PitchBot</h1>

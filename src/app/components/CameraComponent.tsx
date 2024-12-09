@@ -74,14 +74,14 @@ const CameraComponent: React.FC<CameraComponentProps> = ({
             className='flex items-center justify-center h-full w-full'
           />
           <div className='absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2'>
-            <button onClick={toggleVideo} className={`p-3 rounded-full border-[#6f04bd] border-2 ${videoEnabled ? 'bg-red-500' : 'bg-green-500'} text-white`} >
+            <button onClick={toggleVideo} className={`p-3 rounded-full border-[#050505] border-2 ${videoEnabled ? 'bg-red-500' : 'bg-green-500'} text-white`} >
               <Image
                 src={videoEnabled ? camera_off : camera_on}
                 alt={videoEnabled ? 'Camera On' : 'Camera Off'}
                 className='w-6 h-6'
               />
             </button>
-            <button onClick={toggleAudio} className={`p-3 rounded-full border-[#6f04bd] border-2 ${audioEnabled ? 'bg-red-500' : 'bg-green-500'} text-white`}>
+            <button onClick={toggleAudio} className={`p-3 rounded-full border-[#050505] border-2 ${audioEnabled ? 'bg-red-500' : 'bg-green-500'} text-white`}>
               <Image
               src={audioEnabled ? microphone_mute : microphone_on}
               alt={audioEnabled ? 'Microphone On' : 'Microphone Mute'}

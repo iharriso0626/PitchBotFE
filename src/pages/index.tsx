@@ -40,8 +40,9 @@ const Home: React.FC = () => {
       <ScoresButton />
 
       {/* Box Containing Main Body */}
-      <div className="p-5 flex flex-col w-screen h-full rounded-2xl border-[#0C2340] border-4 bg-white mx-auto font-sans">
-        <h1 className="text-2xl justify-center flex text-black font-bold mb-4">PitchBot: By Samford University</h1>
+      <div className="p-5 flex flex-col w-screen h-full rounded-2xl border-[#e1e1e1] border-4 bg-[#e1e1e1] mx-auto font-sans">
+        
+        <h1 className="text-2xl justify-center flex text-black font-bold mb-4">SalesBot</h1>
 
         <CameraComponent
           listening={listening}
