@@ -28,17 +28,27 @@ const MessageBox: React.FC<MessageBoxProps> = ({
   const [loading, setLoading] = useState(false);
 
 
-const sendMessageToAI = async (message: string) => {
-  try {
-    const response = await axios.post('http://localhost:5001/generate', { prompt: message });
-    const generatedText = response.data.text; // Extract the bot's response
-    console.log('AI Response:', JSON.stringify(response.data, null, 2)); // Log the response in a readable format
-    return generatedText;
-  } catch (error) {
-    console.error('Error generating text:', error);
-    return 'Error generating response';
-  }
-};
+  const sendMessageToAI = async (message: string) => {
+    try {
+      const response = await axios.post('http://localhost:5001/generate', { prompt: message });
+      console.log('Full response:', response.data);
+      
+      // Check if generated_text is an array and has at least two elements
+      if (Array.isArray(response.data.generated_text) && response.data.generated_text.length > 1) {
+        const generatedText = response.data.generated_text[2].content;
+        console.log('AI Response:', generatedText);
+        return generatedText;
+      } else {
+        console.error('Unexpected response structure:', response.data);
+        return 'Unexpected response structure';
+      }
+    } catch (error) {
+      console.error('Error generating text:', error);
+      return 'Error generating response';
+    }
+  };
+  
+  
 
 const handleSendWithAI = async () => {
   if (input.trim()) {
